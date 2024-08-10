@@ -11,7 +11,10 @@
 # we highly recommend that you store your data as text files rather than excel files,
 # i.e. csv's (comma separated values) or tsv's (tab separated values)
 
-d <- read.csv("data/observations-465928.csv")
+# download the file directly from github, add '?raw=true' to the end of the url for the data
+# so that the raw csv is downloaded
+
+d <- read.csv("https://github.com/BinghamtonBioHackyHours/R-Crash-Course-2024/blob/main/data/observations-465928.csv?raw=true")
 
 # let's take a quick look at what is in the data using str()
 

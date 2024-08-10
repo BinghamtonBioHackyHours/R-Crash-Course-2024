@@ -150,3 +150,7 @@ lon_mod <- lm(observed_on ~ longitude, data = dip_dat_u)
 
 plot(observed_on ~ longitude, data = dip_dat_u)
 abline(a = coef(lon_mod)[1], b = coef(lon_mod)[2], col = "red")
+
+# we may want to save this data set for later analysis, so let's write it as a csv in the data directory
+
+write.csv(dip_dat_u, "data/dip_dat.csv", row.names = F)

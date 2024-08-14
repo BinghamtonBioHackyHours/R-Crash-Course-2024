@@ -17,9 +17,9 @@
 d <- read.csv("https://github.com/BinghamtonBioHackyHours/R-Crash-Course-2024/blob/main/data/observations-465928.csv?raw=true")
 
 # let's take a quick look at what is in the data using str()
-
+iris
 str(d)
-
+View(d)
 # we are really only interested in the date observed, longitude, latitude, and scientific name,
 # so let's pull out just those columns
 
@@ -47,16 +47,20 @@ table(dip_dat$scientific_name)
 # ok, so now we have just the species we want, let's make sure there are no duplicate 
 # observations if there are no duplicates
 
+duplicated(c(1,1,3))
+
 duplicated(dip_dat$latitude)
 
 # the list of T/Fs is hard to look at, let's see how many duplicated columns there are
 sum(duplicated(dip_dat$latitude))
 
 # just to make sure these are from the same spots, let's include longitude
-sum(duplicated(dip_dat[,c("latitude", "longitude")]))
+sum(duplicated(dip_dat[ ,c("latitude", "longitude")]))
 
 # ok so some of the duplicated latitudes have different longitudes, let's keep them,
 # so we will get rid of everything that has the same latitude and longitude
+
+c(1,1,3)[!duplicated(c(1,1,3))]
 
 dip_dat_u <- dip_dat[!duplicated(dip_dat[ , c("latitude", "longitude")]),]
 
@@ -157,3 +161,4 @@ abline(a = coef(lon_mod)[1], b = coef(lon_mod)[2], col = "red")
 # we may want to save this data set for later analysis, so let's write it as a csv in the data directory
 
 write.csv(dip_dat_u, "data/dip_dat.csv", row.names = F)
+
